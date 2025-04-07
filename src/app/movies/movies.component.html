@@ -1,0 +1,39 @@
+<div class="d-flex align-items-center mt-3">
+  <h1>Les films</h1>
+  <button type="button" class="btn btn-outline-warning mx-3" routerLink="/add-movie">Nouveau film</button>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Titre</th>
+    <th scope="col">Date</th>
+    <th scope="col">Réalisateur</th>
+    <th scope="col">Note</th>
+    <th scope="col">Synopsis</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (movie of movies; track movie.id) {
+      <tr>
+        <th scope="row">{{movie.id}}</th>
+        <td>{{movie.title}}</td>
+        <td>{{movie.releaseDate | date:'dd/MM/yy'}}</td>
+        <td>{{movie.director}}</td>
+        <td>{{movie.rate}}</td>
+        <td>{{movie.synopsis}}</td>
+        <td>
+          <div class="d-flex">
+            @if(movie.id) {
+              <button type="button" class="btn btn-danger deleteButton" (click)=deleteMovie(movie.id)><i
+                class="bi bi-trash"></i></button>
+              <button type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></button>
+              <button type="button" class="btn btn-success addPj"><i class="bi bi-camera"></i></button>
+            }
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
