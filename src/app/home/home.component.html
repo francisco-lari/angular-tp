@@ -1,3 +1,7 @@
-@for (movie of movies$ | async; track movie.id) {
+<img class="prespic" src="https://media1.tenor.com/m/YPlUaXqG5LoAAAAd/sonia-sonic-the-hedgehog.gif" />
+
+<div id="movers">
+  @for (movie of movies$ | async; track movie.id) {
   <app-movie [movie]="movie"></app-movie>
-}
+  }
+</div>

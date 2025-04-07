@@ -1,5 +1,15 @@
-<nav class="navbar navbar-light navbar-expand bg-light ps-5">
-  <a class="navbar-brand">{{ title | titlecase }}</a>
-  <a class="nav-item nav-link" routerLink="/">Accueil</a>
-  <a class="nav-item nav-link ms-3" routerLink="/movies">Gestion de films</a>
+<nav class="navbar navbar-warning navbar-expand-lg bg-warning ps-5">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img [src]="'assets/bjfm.png'" alt="BonjourFilms Logo" class="logo">
+    </a>
+    <div class="collapse navbar-collapse">
+      <div class="navbar-nav ms-auto align-items-center">
+        <a class="nav-item nav-link" routerLink="/">Accueil</a>
+        <a class="nav-item nav-link" routerLink="/inscription">Inscription</a>
+        <a class="nav-item nav-link" routerLink="/myspace">Mon espace</a>
+        <a class="nav-item nav-link" routerLink="/movies">Gestion de films</a>
+      </div>
+    </div>
+  </div>
 </nav>

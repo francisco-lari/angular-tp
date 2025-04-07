@@ -1,9 +1,10 @@
-import {Component, DestroyRef, inject} from '@angular/core';
-import {DatePipe} from "@angular/common";
-import {Movie} from "../models/movie";
-import {MoviesService} from "../services/movies.service";
-import {RouterLink} from "@angular/router";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import { Component, DestroyRef, inject } from '@angular/core';
+import { DatePipe } from "@angular/common";
+import { Movie } from "../models/movie";
+import { MoviesService } from "../services/movies.service";
+import { RouterLink } from "@angular/router";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-movies',
@@ -16,6 +17,13 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
   styleUrl: './movies.component.scss'
 })
 export class MoviesComponent {
+
+  constructor(private toastr: ToastrService) { }
+
+  showSuccess() {
+    this.toastr.success('Film supprimé !');
+  }
+
   private readonly moviesService = inject(MoviesService)
   movies!: Movie[];
   ngOnInit(): void {
@@ -24,8 +32,9 @@ export class MoviesComponent {
 
   private destroyRef = inject(DestroyRef)
   deleteMovie(id: number): void {
-    this.moviesService.deleteMovie(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() =>
+    this.moviesService.deleteMovie(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
       this.movies = this.movies.filter(film => film.id !== id)
-    );
+      this.showSuccess()
+    });
   }
 }

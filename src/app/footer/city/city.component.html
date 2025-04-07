@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <tr>
+      <th scope="col">{{ city.name | uppercase }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (cinema of city.cinemas; track cinema) {
+    <tr>
+      <td><a href="https://www.youtube.com/">{{ cinema }}</a></td>
+    </tr>
+    }
+  </tbody>
+</table>

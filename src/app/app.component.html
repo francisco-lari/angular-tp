@@ -1,2 +1,9 @@
-<app-navbar [title]="title"></app-navbar>
-<router-outlet/>
+<div class="min-vh-100 d-flex flex-column">
+  <main class="flex-fill">
+    <app-navbar [title]="title"></app-navbar>
+    <router-outlet />
+  </main>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</div>
