@@ -1,7 +1,50 @@
-<img class="prespic" src="https://media1.tenor.com/m/YPlUaXqG5LoAAAAd/sonia-sonic-the-hedgehog.gif" />
+<div class="prespic-container">
+  <img class="prespic" src="https://media1.tenor.com/m/YPlUaXqG5LoAAAAd/sonia-sonic-the-hedgehog.gif" />
+  <div class="prespic-text">
+    <h1>Want to<br>watmtch<br>movers?</h1>
+    <h2>Go wamtch<br>movers!!!</h2>
+  </div>
+</div>
+
 
 <div id="movers">
   @for (movie of movies$ | async; track movie.id) {
   <app-movie [movie]="movie"></app-movie>
   }
 </div>
+<!--
+<div class="carousel-container">
+  <button>&lt;</button>
+  <button>&gt;</button>
+  <div id="movers" class="row flex-nowrap carousel-row">
+    @for (movie of movies$ | async; track movie.id) {
+    <div class="col-2 carousel-card">
+      <app-movie [movie]="movie"></app-movie>
+    </div>
+    }
+  </div>
+</div>
+<!--
+<p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false"
+  [responsiveOptions]="responsiveOptions">
+  <ng-template let-product #item>
+    <div class="border border-surface rounded-border m-2 p-4">
+      <div class="mb-4">
+        <div class="relative mx-auto">
+          <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name"
+            class="w-full rounded-border" />
+          <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)" class="absolute"
+            [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+        </div>
+      </div>
+      <div class="mb-4 font-medium">{{ product.name }}</div>
+      <div class="flex justify-between items-center">
+        <div class="mt-0 font-semibold text-xl">{{ '$' + product.price }}</div>
+        <span>
+          <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
+          <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
+        </span>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>-->

@@ -13,8 +13,12 @@ export class UsersService {
 
   private readonly url = "http://localhost:8080/users";
 
-  getUsers(): Observable<User> {
-    return this.httpClient.get<User>(this.url);
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.url);
+  }
+
+  getUserWitID1(): Observable<User> {
+    return this.httpClient.get<User>(this.url + "/" + 1);
   }
 
   addUser(user: User): Observable<User> {

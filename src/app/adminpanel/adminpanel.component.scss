@@ -1,0 +1,15 @@
+.card-container {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card {
+  flex: 1;
+  background-color: #f2f2f2;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}

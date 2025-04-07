@@ -2,7 +2,14 @@
 
 <div>
   <button class="btn btn-warning">Nouvel avis</button>
-  <button class="btn btn-warning">Modifier mes avis</button>
-  <button class="btn btn-warning">Modifier mes infos</button>
-  <button class="btn btn-warning">Déconnexion</button>
+  <button class="btn btn-outline-secondary">Modifier mes avis</button>
+  <button class="btn btn-secondary">Modifier mes infos</button>
+  <button class="btn btn-danger">Déconnexion</button>
 </div>
+
+<h2>Mes données</h2>
+<ul>
+  <li>Nom: <b>{{user.firstName}}</b> Prénom: <b>{{user.lastName}}</b></li>
+  <li>Age: <b>{{user.age}}</b> Email: <b>{{user.email}}</b></li>
+  <li>Point de fidélité: <b>{{user.points}}</b></li>
+</ul>

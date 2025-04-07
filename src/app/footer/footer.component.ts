@@ -13,4 +13,5 @@ export class FooterComponent {
   paris: City = { name: "Paris", cinemas: ["Beaugrenelle", "Champs-Elysées", "La Vilette"] };
   marseille: City = { name: "Marseille", cinemas: ["Madeleine", "Plan de campagne", "La Joliette"] };
   lyon: City = { name: "Lyon", cinemas: ["Vaise", "Carré de Soie", "Bellecour"] };
+  nice: City = { name: "Nice", cinemas: ["Lingostière", "Masséna", "Gare du Sud"] };
 }

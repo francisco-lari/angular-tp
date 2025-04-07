@@ -1,44 +1,74 @@
-import { Component } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { User } from "../../models/user";
+import { UsersService } from '../../services/users.service';
+import { NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
   standalone: true,
-  imports: [FormsModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf
+  ],
   templateUrl: './inscription.component.html',
   styleUrl: './inscription.component.scss'
 })
 export class InscriptionComponent {
-  user: User = {
-    firstName: '',
-    lastName: '',
-    age: 0,
-    email: ''
+
+  profileForm = new FormGroup({
+    firstname: new FormControl('', [
+      Validators.required
+    ]),
+    lastname: new FormControl('', [
+      Validators.required
+    ]),
+    age: new FormControl(0, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(120)
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ])
+  })
+
+  constructor(private toastr: ToastrService) { }
+
+  showSuccess() {
+    this.toastr.success('Inscription réussie !');
   }
 
-  addUser(): void {
-    if (this.user.firstName.toLocaleUpperCase() !== this.user.firstName) {
-      return;
-    }
-    if (this.user.lastName.toLocaleUpperCase() !== this.user.lastName) {
-      return;
-    }
-    if (this.user.age > 150 || this.user.age < 0) {
-      return;
-    }
-    const regex = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-    if (!regex.test(this.user.email)) {
-      return;
-    }
-    /*
-        this.moviesService.addMovie(this.movie).subscribe(
-          () => {
-            this.showSuccess()
-            this.router.navigate(['/movies'])
-          }
-        );
-        */
+  isReady(): boolean {
+    return this.profileForm.valid;
   }
-  /**/
+
+
+  private readonly userService = inject(UsersService)
+  private readonly router = inject(Router)
+
+  submitForm() {
+    if (this.profileForm.invalid) {
+      this.profileForm.markAllAsTouched();
+      return;
+    }
+
+    const formValue = this.profileForm.value;
+
+    const user: User = {
+      firstName: formValue.firstname || '',
+      lastName: formValue.lastname || '',
+      age: formValue.age || 0,
+      email: formValue.email || ''
+    };
+
+    this.userService.addUser(user).subscribe(() => {
+      this.showSuccess();
+      this.router.navigate(['/']);
+    });
+  }
 }

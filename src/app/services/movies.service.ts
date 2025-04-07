@@ -14,6 +14,9 @@ export class MoviesService {
   getMovies(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>(this.url);
   }
+  getAverage(): Observable<number> {
+    return this.httpClient.get<number>(this.url + "/average");
+  }
 
   addMovie(movie: Movie): Observable<Movie> {
     return this.httpClient.post<Movie>(this.url, movie);

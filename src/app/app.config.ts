@@ -17,6 +17,6 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-top-custom',
       preventDuplicates: true,
     }),
-    importProvidersFrom(ReactiveFormsModule),
+    importProvidersFrom(ReactiveFormsModule)
   ]
 };

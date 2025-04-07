@@ -1,30 +1,40 @@
 <h1>Nouveau film</h1>
+
 <div>
-  <form [formGroup]="profileForm">
+  <form [formGroup]="profileForm" class="add-movie-form">
+    <div class="d-flex flex-column w-50 add-movie-input">
+      <label for="title">Titre</label>
+      <input id="title" type="text" formControlName="title">
+      <small class="text-danger" *ngIf="profileForm.get('title')?.touched && profileForm.get('title')?.invalid">
+        Le titre est requis et doit être en majuscules.
+      </small>
+    </div>
 
-    <label for="title">First Name: </label>
-    <input id="title" type="text" formControlName="title">
+    <div class="d-flex flex-column w-50 add-movie-input">
+      <label for="director">Réalisateur</label>
+      <input id="director" type="text" formControlName="director">
+      <small class="text-danger" *ngIf="profileForm.get('director')?.touched && profileForm.get('director')?.invalid">
+        Format : Prénom Nom (avec majuscule).
+      </small>
+    </div>
 
-    <label for="director">Last Name: </label>
-    <input id="director" type="text" formControlName="director">
+    <div class="d-flex flex-column w-50 add-movie-input">
+      <label for="releaseDate">Date de Sortie</label>
+      <input id="releaseDate" type="date" formControlName="releaseDate">
+      <small class="text-danger"
+        *ngIf="profileForm.get('releaseDate')?.touched && profileForm.get('releaseDate')?.invalid">
+        La date est requise est doit être avant aujourd'hui.
+      </small>
+    </div>
 
+    <div class="d-flex flex-column w-50 add-movie-input">
+      <label for="synopsis">Synopsis</label>
+      <input id="synopsis" type="text" formControlName="synopsis">
+      <small class="text-danger" *ngIf="profileForm.get('synopsis')?.touched && profileForm.get('synopsis')?.invalid">
+        Le synopsis doit faire au moins 30 caractères.
+      </small>
+    </div>
+
+    <button class="btn btn-warning" (click)=addMovie() [disabled]="!isReady()">Ajouter</button>
   </form>
 </div>
-
-<div class="d-flex flex-column w-50">
-  <label for="title">Titre</label>
-  <input type="text" id="title" name="title" [(ngModel)]="movie.title" />
-</div>
-<div class="d-flex flex-column w-50">
-  <label for="director">Réalisateur</label>
-  <input type="text" id="director" name="director" [(ngModel)]="movie.director" />
-</div>
-<div class="d-flex flex-column w-50">
-  <label for="releaseDate">Date de Sortie</label>
-  <input type="date" id="releaseDate" name="releaseDate" [(ngModel)]="movie.releaseDate" />
-</div>
-<div class="d-flex flex-column w-50">
-  <label for="synopsis">Synopsis</label>
-  <input type=" text" id="synopsis" name="synopsis" [(ngModel)]="movie.synopsis" />
-</div>
-<button class="btn btn-warning" (click)=addMovie()>Ajouter</button>

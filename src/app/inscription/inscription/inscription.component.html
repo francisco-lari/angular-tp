@@ -1,22 +1,36 @@
 <h1>Passionné(e) de cinéma ?</h1>
 <h1>Inscris-toi !</h1>
 <h4>Et rejoins une vraie communauté</h4>
-<form class="pf-v5-c-login__main">
-    <div class="d-flex flex-column w-50">
+
+<form [formGroup]="profileForm" class="pf-v5-c-login__main">
+    <div class="d-flex flex-column w-50 inscription-input">
         <label for="firstname">Prénom</label>
-        <input type="text" id="firstname" name="firstname" [(ngModel)]="user.firstName" />
+        <input id="firstname" type="text" formControlName="firstname">
+        <small class="text-danger"
+            *ngIf="profileForm.get('firstname')?.touched && profileForm.get('firstname')?.invalid">
+            Le prénom est requis.
+        </small>
     </div>
-    <div class="d-flex flex-column w-50">
+    <div class="d-flex flex-column w-50 inscription-input">
         <label for="lastname">Nom de famille</label>
-        <input type="text" id="lastname" name="lastname" [(ngModel)]="user.lastName" />
+        <input id="lastname" type="text" formControlName="lastname">
+        <small class="text-danger" *ngIf="profileForm.get('lastname')?.touched && profileForm.get('lastname')?.invalid">
+            Le nom est requis.
+        </small>
     </div>
-    <div class="d-flex flex-column w-50">
+    <div class="d-flex flex-column w-50 inscription-input">
         <label for="age">Age</label>
-        <input type="number" id="age" name="age" [(ngModel)]="user.age" />
+        <input id="age" type="number" formControlName="age">
+        <small class="text-danger" *ngIf="profileForm.get('age')?.touched && profileForm.get('age')?.invalid">
+            L'âge est requis.
+        </small>
     </div>
-    <div class="d-flex flex-column w-50">
+    <div class="d-flex flex-column w-50 inscription-input">
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" [(ngModel)]="user.email" />
+        <input id="email" type="text" formControlName="email">
+        <small class="text-danger" *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.invalid">
+            L'email est requis.
+        </small>
     </div>
-    <button class="btn btn-warning" (click)=addUser()>M'inscrire</button>
+    <button class="btn btn-warning" (click)=submitForm() [disabled]="!isReady()">M'inscrire</button>
 </form>

@@ -1,10 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 #movers {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#prespic {
-  width: 100vw;
-  height: 50%;
+.prespic {
+  margin: auto;
+  display: block;
+  width: 70vw;
+  height: 35vw;
+}
+
+.prespic-container {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin: auto;
+  display: block;
+  width: 70vw;
+  height: 35vw;
+  box-sizing: border-box;
+}
+
+.prespic-text {
+  position: absolute;
+  top: 7%;
+  right: 5%;
+  transform: translate(-0%, -0%);
+  color: rgb(255, 255, 255);
+  text-shadow:
+    1px 1px 2px rgb(0, 0, 0),
+    0 0 1em rgb(0, 0, 0),
+    0 0 0.2em rgb(0, 0, 0);
+  font-family: "Barrio", "Comic Sans MS", "Comic Sans";
+}
+
+.prespic-text h1 {
+  font-weight: bolder;
+  font-size: 4vw;
+}
+
+.prespic-text h2 {
+  font-weight: bold;
+  font-size: 3.25vw;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-row {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: transform .5s ease-in-out;
+  margin: 0 -5px;
+  width: 100%;
+}
+
+.carousel-card {
+  padding: 0 5px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  transition: all .3s ease;
+}
+
+@media (min-width: 576px) {
+  .carousel-card {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 864px) {
+  .carousel-card {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+@media (min-width: 1152px) {
+  .carousel-card {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .carousel-card {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+@media (min-width: 1728px) {
+  .carousel-card {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
 }
